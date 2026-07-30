@@ -28,7 +28,7 @@ This project covers:
 * *Age*: Age in years
 * *SibSp*: Number of siblings/spouses aboard
 * *Parch*: Number of parents/children aboard
-* *Fare: Passenger fare
+* *Fare*: Passenger fare
 * *Embarked:* Port of Embarkation (C = Cherbourg, Q = Queenstown, S = Southampton)
 
 **Note**: Columns PassengerId, Name, Ticket, and Cabin were dropped prior to model training to avoid noise.
