@@ -65,6 +65,7 @@ The models were evaluated on a 20% test split (random_state=42) using standard c
 |*Logistic Regression*|~81%|
 |*Decision Tree*|~79%|
 |*Random Forest*|~84% (Best Model)|
+
 *Data subject to variations depending on system factors and network deoendencies*
 
 ### Key Classification Metrics (Logistic Regression)
@@ -80,11 +81,12 @@ The models were evaluated on a 20% test split (random_state=42) using standard c
 
 1. **Data Loading & Inspection**: Checked basic summary statistics and null values.
 
-    *Null Counts*
-    |**COLUMN NAME**|**NULL COUNT**|
-    |---|---|
-    |Age|0|
-    |Cabin|0|
+   *Null Counts*
+   |**COLUMN NAME**|**NULL COUNT**|
+   |---|---|
+   |Age|177|
+   |Cabin|687|
+   |Embarked|2|
 
     <img src="visualisations/Missing Values Heatmap.png" alt="Missing Values Heatmap" width="600"/>
 
@@ -93,9 +95,15 @@ The models were evaluated on a 20% test split (random_state=42) using standard c
 
     <img src="visualisations/Survival Distribution.png" alt=" Survival Distribution" width="600"/>
 
+   Obervation: More passengers died than survived.
+
     <img src="visualisations/Gender vs Survival.png" alt="Gender vs Survival" width="600"/>
 
+    Observation: Females had much higher survival rates.
+
     <img src="visualisations/Passenger Class vs Survival.png" alt="Passenger Class vs Survival" width="600"/>
+
+    Observation: First-class passengers survived more frequently.
   
 4. **Data Preprocessing**:
    * Imputed Age missing values using the median.
@@ -129,8 +137,29 @@ The models were evaluated on a 20% test split (random_state=42) using standard c
    |Actual Negative (0)|Actual Negative (0)<br>(Correctly predicted Did Not Survive)|False Positive (FP)<br>(Type I Error: Incorrectly predicted Survived)|
    |Actual Positive (1)|False Negative (FN)<br>(Type II Error: Incorrectly predicted Did Not Survive)|True Positive (TP)<br>(Correctly predicted Survived)|
 
-**Key Insights from Confusion Matrix:**
-  * **Precision ($\frac{\text{TP}}{\text{TP} + \text{FP}}$)**: Measures how reliable positive predictions are
-  * **Recall / Sensitivity ($\frac{\text{TP}}{\text{TP} + \text{FN}}$**: : Measures the model's ability to capture all actual positive instances.
-  * **Detecting Overfitting & Leakage**: When models show abnormally high accuracies (~95%+ on simple decision trees), inspecting the Confusion Matrix highlights whether the model is falsely achieving near-zero False Positives and False Negatives due to memorization of duplicated test rows.
+**Key Insights from Evaluation Metric**
+   * **Expected Logistic Regression Results:**
+     
+      Typical Output:
+         
+      |**Metric**|**Value**|
+      |---|---|
+      |*Accuracy*|80%-83%|
+      |*Precision*|78%-80%|
+      |*Recall*|75%-80%|
+      |*F1 Score*|77%-81%|
+
+   * **Comparing Models:**
+
+      |**Model**|**Accuracy**|
+      |---|---|
+      |*Logistic Regression*|0.81|
+      |*Decision Tree*|0.79|
+      |*Random Forest*|0.84|
+
+   * **Best Model:**
+      The expected best model of the three aforementioned model: **Random Forest**
+
+     
+ 
     
